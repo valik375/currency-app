@@ -47,7 +47,7 @@ onMounted(async () => {
   }
 })
 
-const getCurrencyName = (short_code) => currencyList.value.find(currency => currency.short_code === short_code)?.name
+const getCurrencyName = (short_code) => currencyList.value.find(currency => currency?.short_code === short_code)?.name
 const fromTitle = computed(() => `${currencyFrom.value} ${ getCurrencyName(currencyFrom.currency) } equal`)
 const toTitle = computed(() => `${currencyTo.value} ${ getCurrencyName(currencyTo.currency) }`)
 
@@ -68,12 +68,12 @@ const calculateCurrencies = async () => {
 <style scoped>
 .currency-calculator {
   max-width: 30rem;
+  padding: 1rem;
 }
 .currency-calculator__form {
   display: flex;
   flex-direction: column;
   gap: .5rem;
-  padding: 1rem;
 }
 .currency-calculator__error {
   font-size: 1rem;
