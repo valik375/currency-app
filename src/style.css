@@ -1,0 +1,18 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    --background: #F4FDF8;
+    --foreground: #505050;
+    --border-color: #ccc;
+    --error-color: red;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+}
