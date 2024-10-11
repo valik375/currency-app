@@ -38,14 +38,16 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:value', 'update:currency', 'onUpdate'])
 
-const onInput = (event) => {
-  const value = event.target.value.replace(/\D/g, '')
+const onInput = (event: InputEvent) => {
+  const target = event.target as HTMLInputElement
+  const value = target.value.replace(/\D/g, '')
   event.target.value = value
   emit('update:value', value)
   emit('onUpdate')
 }
-const onSelect = (event) => {
-  emit('update:currency', event.target.value)
+const onSelect = (event: Event) => {
+  const target = event.target as HTMLSelectElement
+  emit('update:currency', target.value)
   emit('onUpdate')
 }
 </script>

@@ -4,10 +4,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
-
 <style scoped>
 .loader {
   width: 100%;

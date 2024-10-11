@@ -4,10 +4,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
-
 <style scoped>
 .card {
   border: 1px solid var(--border-color);

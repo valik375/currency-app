@@ -21,18 +21,22 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, reactive, computed } from 'vue'
+import { onMounted, ref, Ref, reactive, computed } from 'vue'
 import CurrencyApi from './api/CurrencyApi.ts'
 import Card from '../../UI/Card.vue'
 import CurrencyInput from './components/CurrencyInput.vue'
 import Loader from '../../UI/Loader.vue'
 
-const isLoading = ref(true)
-const errorMessage = ref('')
-const currencyList = ref([])
+const isLoading: Ref<boolean> = ref(true)
+const errorMessage: Ref<string> = ref('')
+const currencyList: Ref<any[]> = ref([])
 
-const currencyFrom = reactive({ value: 1, currency: 'USD' })
-const currencyTo = reactive({ value: 1, currency: 'PLN' })
+interface CurrencyInput {
+  value: number
+  currency: string
+}
+const currencyFrom = reactive<CurrencyInput>({ value: 1, currency: 'USD' })
+const currencyTo = reactive<CurrencyInput>({ value: 1, currency: 'PLN' })
 
 onMounted(async () => {
   try {
@@ -47,7 +51,7 @@ onMounted(async () => {
   }
 })
 
-const getCurrencyName = (short_code) => currencyList.value.find(currency => currency?.short_code === short_code)?.name
+const getCurrencyName = (short_code) => currencyList.value.find(currency => currency.short_code === short_code).name || ''
 const fromTitle = computed(() => `${currencyFrom.value} ${ getCurrencyName(currencyFrom.currency) } equal`)
 const toTitle = computed(() => `${currencyTo.value} ${ getCurrencyName(currencyTo.currency) }`)
 
