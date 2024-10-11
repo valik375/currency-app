@@ -1,6 +1,8 @@
 import axios from 'axios'
 
 export default () => {
+  axios.defaults.baseURL = import.meta.env.VITE_API_URL
+  axios.defaults.params = { api_key: import.meta.env.VITE_API_KEY }
 
   // You can use your API KEY or use constants
   // const API_URL = 'https://api.currencybeacon.com/v1'
@@ -8,8 +10,6 @@ export default () => {
   // axios.defaults.baseURL = API_URL
   // axios.defaults.params = { api_key: API_KEY }
 
-  axios.defaults.baseURL = import.meta.env.VITE_API_URL
-  axios.defaults.params = { api_key: import.meta.env.VITE_API_KEY }
   axios.interceptors.response.use(
     response => response,
     error => {
