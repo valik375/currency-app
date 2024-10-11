@@ -1,12 +1,14 @@
 import axios from 'axios'
 
 export default () => {
-  axios.defaults.baseURL = import.meta.env.VITE_API_URL
 
-  // You can use your API KEY or use my in constants
-  // import { API_KEY } from '../constants.ts'
+  // You can use your API KEY or use constants
+  // const API_URL = 'https://api.currencybeacon.com/v1'
+  // const API_KEY = 'ZOVlnCqkmkl7SiCBnLKTzvZ4eXtzsk2c'
+  // axios.defaults.baseURL = API_URL
   // axios.defaults.params = { api_key: API_KEY }
 
+  axios.defaults.baseURL = import.meta.env.VITE_API_URL
   axios.defaults.params = { api_key: import.meta.env.VITE_API_KEY }
   axios.interceptors.response.use(
     response => response,
