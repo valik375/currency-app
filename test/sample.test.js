@@ -11,19 +11,6 @@ describe("Sample Mocha Test (ESM)", function () {
   })
 })
 
-function fetchData() {
-  return setTimeout(() => {
-    return { data: 'Hello, world!', age: 23 }
-  }, 1000)
-}
-describe('Asynchronous Testing with done', function () {
-  it('should fetch data correctly', async function () {
-    const result = await fetchData()
-    expect(result).to.have.property('data').that.equals('Hello, Promise!')
-    expect(result).to.have.property('age').that.equals(23)
-  })
-})
-
 function fetchPromiseData() {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -31,11 +18,18 @@ function fetchPromiseData() {
     }, 1000)
   })
 }
+describe('Asynchronous Testing with done', function () {
+  it('should fetch data correctly', async function () {
+    const result = await fetchPromiseData()
+    expect(result).to.have.property('data').that.equals('Hello, Promise!')
+    expect(result).to.have.property('age').that.equals(32)
+  })
+})
 describe('Promise-based Testing', function () {
   it('should fetch data correctly with Promise', function () {
     return fetchPromiseData().then((result) => {
       expect(result).to.have.property('data').that.equals('Hello, Promise!')
-      expect(result).to.have.property('age').that.equals(32)
+      expect(result).to.have.property('age').that.equals('32')
     })
   })
 })
