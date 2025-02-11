@@ -1,0 +1,8 @@
+{
+  "all": true,
+  "include": ["src/**/*.js"],
+  "exclude": ["test/**/*.test.js"],
+  "reporter": ["text", "html"],
+  "cache": false,
+  "require": ["source-map-support/register"]
+}
