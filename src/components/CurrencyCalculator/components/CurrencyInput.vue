@@ -1,10 +1,10 @@
 <template>
   <div class="currency-input">
-    <input
-        :value="props.value"
-        type="text"
-        @input="onInput"
-    >
+<!--    <input-->
+<!--        :value="props.value"-->
+<!--        type="text"-->
+<!--        @input="onInput"-->
+<!--    >-->
     <div class="currency-input__divider"></div>
     <select
         id="currency"
@@ -12,11 +12,11 @@
         name="currency"
         @change="onSelect"
     >
-      <option
-          v-for="option in options"
-          :key="option.id"
-          :value="option.short_code"
-      >{{ option.name }}</option>
+<!--      <option-->
+<!--          v-for="option in options"-->
+<!--          :key="option.id"-->
+<!--          :value="option.short_code"-->
+<!--      >{{ option.name }}</option>-->
     </select>
   </div>
 </template>
@@ -38,13 +38,13 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:value', 'update:currency', 'onUpdate'])
 
-const onInput = (event: InputEvent) => {
-  const target = event.target as HTMLInputElement
-  const value = target.value.replace(/\D/g, '')
-  event.target.value = value
-  emit('update:value', value)
-  emit('onUpdate')
-}
+// const onInput = (event: InputEvent) => {
+  // const target = event.target as HTMLInputElement
+  // const value = target.value.replace(/\D/g, '')
+  // event.target.value = value
+  // emit('update:value', value)
+  // emit('onUpdate')
+// }
 const onSelect = (event: Event) => {
   const target = event.target as HTMLSelectElement
   emit('update:currency', target.value)
