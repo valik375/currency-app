@@ -7,23 +7,17 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies (ensure clean install)
 RUN npm install --legacy-peer-deps
 
 # Copy the rest of the application files
 COPY . .
 
-# Fix permissions issue (sometimes necessary for Vue builds)
-RUN chmod -R 777 /app/node_modules
+# Expose port 5173 (Vite default)
+EXPOSE 5173
 
-# Set environment variable for production
-ENV NODE_ENV=production
-
-# Build the Vue.js app
+# Build the Vite app
 RUN npm run build
 
-# Expose port 8080 (default Vue.js port)
-EXPOSE 8080
-
-# Start the application
+# Use a lightweight server to serve the built files
 CMD ["npm", "run", "serve"]
