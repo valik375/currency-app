@@ -14,7 +14,7 @@ describe("Sample Mocha Test (ESM)", function () {
 function fetchPromiseData() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ data: 'Hello, Promise!', age: '32' })
+      resolve({ data: 'Hello, Promise!', age: 32 })
     }, 1000)
   })
 }
@@ -29,7 +29,7 @@ describe('Promise-based Testing', function () {
   it('should fetch data correctly with Promise', function () {
     return fetchPromiseData().then((result) => {
       expect(result).to.have.property('data').that.equals('Hello, Promise!')
-      expect(result).to.have.property('age').that.equals('32')
+      expect(result).to.have.property('age').that.equals(32)
     })
   })
 })
