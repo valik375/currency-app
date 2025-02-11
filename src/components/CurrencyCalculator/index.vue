@@ -44,14 +44,14 @@ onMounted(async () => {
     currencyList.value = await CurrencyApi.read()
     await calculateCurrencies()
   } catch (error) {
-    // errorMessage.value = error.response.data.meta.error_detail
+    errorMessage.value = error.response.data.meta.error_detail
     throw error
   } finally {
     isLoading.value = false
   }
 })
 
-const getCurrencyName = (short_code: string) => currencyList.value.find(currency => currency.short_code === short_code).name || ''
+const getCurrencyName = (short_code) => currencyList.value.find(currency => currency.short_code === short_code).name || ''
 const fromTitle = computed(() => `${currencyFrom.value} ${ getCurrencyName(currencyFrom.currency) } equal`)
 const toTitle = computed(() => `${currencyTo.value} ${ getCurrencyName(currencyTo.currency) }`)
 
